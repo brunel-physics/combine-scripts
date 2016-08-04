@@ -1,0 +1,14 @@
+## Root Files
+*.root
+
+## Vim stuff
+# swap
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+# auto-generated tag files
+tags
