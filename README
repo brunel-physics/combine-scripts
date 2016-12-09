@@ -1,0 +1,3 @@
+To combine the ee and mumu datacards:
+
+python $CMSSW_BASE/src/HiggsAnalysis/CombinedLimit/scripts/combineCards.py MVA_ee=datacard-ee.txt MVA_mumu=datacard-mumu.txt > datacard.txt
