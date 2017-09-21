@@ -1,0 +1,24 @@
+  0 tZq
+  1 DYToLL_M10to50
+  2 DYToLL_M50
+  3 TbartChan
+  4 TbartW
+  5 THQ
+  6 TsChan
+  7 TtChan
+  8 ttH
+  9 TT
+ 10 TtW
+ 11 TTW
+ 12 TTZ
+ 13 TWZ
+ 14 Wjets
+ 15 WW
+ 16 WWW
+ 17 WWZ
+ 18 WZ
+ 19 WZZ
+ 20 ZZ
+ 21 ZZZ
+100 FakeEG
+101 FakeMu
