@@ -1,8 +1,12 @@
 ## Combined datacard
 datacard.txt
+datacard_syst_only.txt
 
-## Root Files
+## Combine output
 *.root
+*.json
+*.pdf
+*.out
 
 ## Vim stuff
 # swap
