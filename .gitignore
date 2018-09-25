@@ -7,6 +7,7 @@ datacard_syst_only.txt
 *.json
 *.pdf
 *.out
+*.log
 
 ## Vim stuff
 # swap
