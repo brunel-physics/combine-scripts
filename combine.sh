@@ -138,4 +138,6 @@ printf "\n\e[1m!== μμ ==!\e[0m\n"
 impacts mumu
 
 printf "\n\e[1m!== COMBINED ==!\e[0m\n"
-impacts combined
+
+printf "\e[1m!===CREATING STACKPLOTS===!\e[0m\n"
+./stackplots.py out/shapes_combined.root
