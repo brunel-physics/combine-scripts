@@ -65,7 +65,7 @@ while getopts "l:a:s:S:t:h" OPTION; do
             ;;
     esac
 done
-shift "$(("${OPTIND}" -1))"
+shift "$((${OPTIND} -1))"
 
 printf "\e[1m!===SETUP===!\e[0m\n"
 mkdir -p logs out
