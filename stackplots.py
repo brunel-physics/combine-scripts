@@ -30,14 +30,12 @@ def make_plot(match, sig_histos, bkg_histos, padding=0, log_y=False,
               lumi=35.9, ratio_range=(0.5, 1.5), x_title="MVA discriminant",
               y_title="Events", outdir = "out"):
 
-    # Sort by normalisation
-    bkg_histos = sorted(bkg_histos, key=lambda h: h.GetSumOfWeights())
-    # ...put signals first
-    histos = sig_histos + bkg_histos
+    # Sort by plot order
+    bkg_histos = sorted(bkg_histos + sig_histos, key=lambda h: plot_order[h.GetName()])
 
     stack = ROOT.THStack("hs", "")
     for hists in histos:
-        hists.SetFillColor(background_colours[hists.GetName()])
+        hists.SetFillColor(ROOT.GetColor(background_colours[hists.GetName()]))
         hists.SetMarkerSize(0)
         hists.SetLineWidth(0)
         stack.Add(hists)
@@ -160,32 +158,85 @@ signals = ["tZq"]
 
 # Colours
 background_colours = {
-    "tZq": 2,
-    "DYToLL_M10to50": 4,
-    "DYToLL_M10to50_aMC@NLO": 4,
-    "DYToLL_M50": 7,
-    "DYToLL_M50_aMC@NLO": 7,
-    "TbartChan": 30,
-    "TbartW": 31,
-    "THQ": 49,
-    "TsChan": 32,
-    "TtChan": 33,
-    "ttH": 28,
-    "TT": 3,
-    "TtW": 40,
-    "TTW": 41,
-    "TTZ": 42,
-    "TWZ": 43,
-    "Wjets": 44,
-    "WW": 18,
-    "WWW": 17,
-    "WWZ": 16,
-    "WZ": 15,
-    "WZZ": 14,
-    "ZZ": 13,
-    "ZZZ": 12,
-    "FakeEG": 1,
-    "FakeMu": 1}
+    "TZQ": "#999999",
+    "DYToLL_M10to50": "#006699",
+    "DYToLL_M10to50_aMC@NLO": "#006699",
+    "DYToLL_M50": "#006699",
+    "DYToLL_M50_aMC@NLO": "#006699",
+    "DYJetsLLPt-0To50": "#006699",
+    "DYJetsLLPt-50To100": "#006699",
+    "DYJetsLLPt-100To250": "#006699",
+    "DYJetsLLPt-250To400": "#006699",
+    "DYJetsLLPt-400To650": "#006699",
+    "DYJetsLLPt-650ToInf": "#006699",
+    "TbartChan": "#ff99cc",
+    "TbarW": "#ff99cc",
+    "THQ": "#ff99cc",
+    "TsChan": "#ff99cc",
+    "TtChan": "#ff99cc",
+    "TTHbb": "#ff99cc",
+    "TTHnonbb": "#ff99cc",
+    "TT": "#cc0000",
+    "TW": "#ff99cc",
+    "TTW": "#339933",
+    "TTZ": "#339933",
+    "TWZ": "#ff99cc",
+    "Wjets": "#ffff33",
+    "WW1l1nu21": "#ff9933",
+    "WW2l2nu": "#ff9933",
+    "WWW": "#993399",
+    "WWZ": "#993399",
+    "WZ2l2q": "#ff9933",
+    "WZ1l1nu2q": "#ff9933",
+    "WZZ": "#993399",
+    "ZZZ": "#ff9933",
+    "ZZ4l": "#ff9933",
+    "ZZ2l2nu": "#ff9933",
+    "ZZ2l2q": "#ff9933",
+    "FakeEG": "#003300",
+    "FakeMu": "#003300",
+}
+
+plot_order = {
+    "DYToLL_M10to50": 8,
+    "DYToLL_M10to50_aMC@NLO": 8,
+    "DYToLL_M50": 8,
+    "DYToLL_M50_aMC@NLO": 8,
+    "DYJetsLLPt-0To50": 8,
+    "DYJetsLLPt-50To100": 8,
+    "DYJetsLLPt-100To250": 8,
+    "DYJetsLLPt-250To400": 8,
+    "DYJetsLLPt-400To650": 8,
+    "DYJetsLLPt-650ToInf": 8,
+    "TT": 7,
+    "WW1l1nu21": 6,
+    "WW2l2nu": 6,
+    "WZ2l2q": 6,
+    "WZ1l1nu2q": 6,
+    "ZZ4l": 6,
+    "ZZ2l2nu": 6,
+    "ZZ2l2q": 6,
+    "FakeEG": 5,
+    "FakeMu": 5,
+    "TbartChan": 4,
+    "TbarW": 4,
+    "THQ": 4,
+    "TsChan": 4,
+    "TtChan": 4,
+    "TTHbb": 4,
+    "TTHnonbb": 4,
+    "TW": 4,
+    "TWZ": 4,
+    "Wjets": 3,
+    "TTW": 2,
+    "TTZ": 2,
+    "WWW": 1,
+    "WWZ": 1,
+    "WZZ": 1,
+    "ZZZ": 1,
+    "TZQ": 0,
+}
+
 
 fi = ROOT.TFile(sys.argv[1], "read")
 keylist = fi.GetListOfKeys()
