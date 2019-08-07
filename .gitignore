@@ -3,8 +3,8 @@ datacard.txt
 datacard_syst_only.txt
 
 ## Combine output
-*.root
-*.json
+/*.root
+/*.json
 *.pdf
 *.out
 *.log

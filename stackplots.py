@@ -277,4 +277,4 @@ for key in keylist:
             elif name not in signals:
                 bkg_histos.append(h)
 
-        make_plot(match, sig_histos, bkg_histos)
+        make_plot(match, sig_histos, bkg_histos, outdir=sys.argv[2])
