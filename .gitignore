@@ -9,6 +9,7 @@ datacard_syst_only.txt
 *.out
 *.log
 out/
+2016+2017
 
 ## Vim stuff
 # swap
