@@ -16,11 +16,11 @@ combine () {
 }
 
 significance () {
-    combine -M Significance -d ${era}/datacards/datacard_"${1}".root --setBruteForceTypeAndAlgo $minlib,$algo --uncapped 1 --name "_${1}" --plot out/${era}/loglikelihood_"${1}".png
+    combine -M Significance -d ${era}/datacards/datacard_"${1}".root --bruteForce --setBruteForceTypeAndAlgo $minlib,$algo --uncapped 1 --name "_${1}" --plot out/${era}/loglikelihood_"${1}".png
 }
 
 signal () {
-    combine -M FitDiagnostics -d ${era}/datacards/datacard_"${1}".root --robustFit=1 --setRobustFitAlgo=$minlib,$algo --setRobustFitStrategy=$strategy --rMin -5 --out out/${era} --name "_${1}" --plots --saveShapes --saveWithUncertainties # --ignoreCovWarning 
+    combine -M FitDiagnostics -d ${era}/datacards/datacard_"${1}".root --robustFit=1 --setRobustFitAlgo=$minlib,$algo --setRobustFitStrategy=$strategy --rMin -15 --out out/${era} --name "_${1}" --plots --saveShapes --saveWithUncertainties # --ignoreCovWarning 
 }
 
 shapes () {
@@ -33,7 +33,7 @@ impacts () {
     combine -M Impacts -d ${era}/datacards/datacard_"${1}"_systonly.root --rMin -5 --doFits --parallel $(nproc) --robustFit=1 --setRobustFitAlgo=$minlib,$algo --setRobustFitStrategy=$strategy --name "${1}" >> logs/impacts_"${1}".log 2>&1 
     rename "${seed}." '' higgsCombine_paramFit_"${1}"*
     combine -M Impacts -d ${era}/datacards/datacard_"${1}".root --rMin -5 --robustFit=1 --setRobustFitAlgo=$minlib,$algo --setRobustFitStrategy=$strategy -o out/${era}/impacts_"${1}".json --name "${1}" >> logs/impacts_"${1}".log 2>&1
-    plotImpacts.py -i out/${era}/impacts_"${1}".json -o out/${era}/impacts_"${1}" --translate ${era}/json/rename.json --per-page 50
+    plotImpacts.py -i out/${era}/impacts_"${1}".json -o out/${era}/impacts_"${1}" --translate ${era}/json/thesis.json --per-page 50 --label-size 0.03
 }
 
 minlib="Minuit2"
