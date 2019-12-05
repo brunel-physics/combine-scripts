@@ -30,9 +30,10 @@ shapes () {
 impacts () {
     combine -M Impacts -d ${era}/datacards/datacard_"${1}".root --rMin -5 --doInitialFit --robustFit=1 --setRobustFitAlgo=$minlib,$algo --setRobustFitStrategy=$strategy --name "${1}" > logs/impacts_"${1}".log 2>&1
     rename "${seed}." '' higgsCombine_initialFit_"${1}"*
-    combine -M Impacts -d ${era}/datacards/datacard_"${1}"_systonly.root --rMin -5 --doFits --parallel $(nproc) --robustFit=1 --setRobustFitAlgo=$minlib,$algo --setRobustFitStrategy=$strategy --name "${1}" >> logs/impacts_"${1}".log 2>&1 
+    combine -M Impacts -d ${era}/datacards/datacard_"${1}".root --rMin -5 --doFits --parallel $(nproc) --robustFit=1 --setRobustFitAlgo=$minlib,$algo --setRobustFitStrategy=$strategy --name "${1}" >> logs/impacts_"${1}".log 2>&1
     rename "${seed}." '' higgsCombine_paramFit_"${1}"*
     combine -M Impacts -d ${era}/datacards/datacard_"${1}".root --rMin -5 --robustFit=1 --setRobustFitAlgo=$minlib,$algo --setRobustFitStrategy=$strategy -o out/${era}/impacts_"${1}".json --name "${1}" >> logs/impacts_"${1}".log 2>&1
+    python stat_remover.py out/${era}/impacts_"${1}".json
     plotImpacts.py -i out/${era}/impacts_"${1}".json -o out/${era}/impacts_"${1}" --translate ${era}/json/thesis.json --per-page 50 --label-size 0.03
 }
 
@@ -150,5 +151,5 @@ impacts mumu
 printf "\n\e[1m!== COMBINED ==!\e[0m\n"
 impacts combined
 
-printf "\e[1m!===CREATING STACKPLOTS===!\e[0m\n"
-./stackplots.py out/${era}/shapes_combined.root out/${era}/
+# printf "\e[1m!===CREATING STACKPLOTS===!\e[0m\n"
+# ./stackplots.py out/${era}/shapes_combined.root out/${era}/
