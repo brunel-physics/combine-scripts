@@ -12,6 +12,8 @@ combine () {
     combineTool.py --cminDefaultMinimizerStrategy="${strategy}" --cminDefaultMinimizerType="${minlib}" --cminDefaultMinimizerAlgo="${algo}" --expectSignal=1.0 --toys "${toys}" --mass 120 --seed "${seed}" "${@}"
 }
 
+
+rm -rf 2016+2017/
 mkdir -p 2016+2017/datacards 2016+2017/shapes
 
 cp 2016/datacards/datacard_combined.txt 2016+2017/datacards/datacard_combined_2016.txt
