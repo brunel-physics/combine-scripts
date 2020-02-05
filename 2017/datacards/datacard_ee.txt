@@ -51,3 +51,6 @@ fake_ee_rate_2017  lnN    -            -                   -               -    
 nuisance edit rename * * pileup_2017 pileup ifexists
 nuisance edit rename * * fsr_2017 fsr ifexists
 nuisance edit rename * * isr_2017 isr ifexists
+nuisance edit rename * * scale_2017 scale ifexists
+nuisance edit rename * * hdamp_2017 scale ifexists
+nuisance edit rename * * ME_2017 scale ifexists
