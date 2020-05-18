@@ -1,6 +1,6 @@
 Repo for combine scripts and datacards used by the tZq analysis
 
-Requires combine tool and CombineHarvester
+Requires combine tool, CombineHarvester, and rename from util-linux
 
 Run `combine.sh` to perform fit and create plots. Run `cobmine.sh -h` for usage.
 
