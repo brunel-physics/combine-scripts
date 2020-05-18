@@ -33,10 +33,15 @@ impacts () {
     combine -M Impacts -d ${era}/datacards/datacard_"${1}".root --rMin -5 --doFits --parallel $(nproc) --robustFit=1 --setRobustFitAlgo=$minlib,$algo --setRobustFitStrategy=$strategy --name "${1}" >> logs/impacts_"${1}".log 2>&1
     rename "${seed}." '' higgsCombine_paramFit_"${1}"*
     combine -M Impacts -d ${era}/datacards/datacard_"${1}".root --rMin -5 --robustFit=1 --setRobustFitAlgo=$minlib,$algo --setRobustFitStrategy=$strategy -o out/${era}/impacts_"${1}".json --name "${1}" >> logs/impacts_"${1}".log 2>&1
+
+    # Before making the plot remove all nuisance parameters from statistical
+    # uncertainties
     python stat_remover.py out/${era}/impacts_"${1}".json
+
     plotImpacts.py -i out/${era}/impacts_"${1}".json -o out/${era}/impacts_"${1}" --translate ${era}/json/thesis.json --per-page 50 --label-size 0.03
 }
 
+# Defaults
 minlib="Minuit2"
 algo="Migrad"
 strategy=1

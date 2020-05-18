@@ -5,7 +5,7 @@ set -Eeuo pipefail
 minlib="Minuit2"
 algo="Combined"
 strategy=1
-toys=-1
+toys=-1 # change to 0 to unblind
 seed=777
 
 combine () {
