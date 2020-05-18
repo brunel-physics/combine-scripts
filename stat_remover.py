@@ -1,3 +1,7 @@
+#!/usr/bin/env python2
+# Short script to strip the statistical nuisances from the json file generated
+# by combine
+
 import json
 import sys
 
