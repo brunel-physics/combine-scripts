@@ -78,7 +78,7 @@ shift "$((${OPTIND} -2))"
 
 printf "\e[1m!===SETUP===!\e[0m\n"
 mkdir -p logs out/${era}
-rm -f higgsCombine* out/${era}/* ${era}/datacards/datacard*.root ${era}/datacards/datacard_combined.txt ${era}/datacards/datacard_combined_systonly.txt logs/*.log
+rm -f higgsCombine* out/${era}/* ${era}/datacards/datacard*.root ${era}/datacards/datacard_combined.txt logs/*.log
 
 printf "\e[1m!== Creating workspaces ==!\e[0m\n"
 # Create workspaces
@@ -90,18 +90,7 @@ printf "\e[1m!== Combining Datacards ==!\e[0m\n"
 pushd ${era}/datacards/
 combineCards.py MVA_ee=datacard_ee.txt MVA_mumu=datacard_mumu.txt > datacard_combined.txt
 popd
-
-awk '!/autoMCStats/' ${era}/datacards/datacard_combined.txt > ${era}/datacards/datacard_combined_systonly.txt
-awk '!/autoMCStats/' ${era}/datacards/datacard_ee.txt > ${era}/datacards/datacard_ee_systonly.txt
-awk '!/autoMCStats/' ${era}/datacards/datacard_mumu.txt > ${era}/datacards/datacard_mumu_systonly.txt
-# cat ${era}/datacards/datacard_combined.txt > ${era}/datacards/datacard_combined_systonly.txt
-# cat ${era}/datacards/datacard_ee.txt > ${era}/datacards/datacard_ee_systonly.txt
-# cat ${era}/datacards/datacard_mumu.txt > ${era}/datacards/datacard_mumu_systonly.txt
-
 t2w ${era}/datacards/datacard_combined.txt > logs/text2workspace_datacard.log
-t2w ${era}/datacards/datacard_ee_systonly.txt > logs/text2workspace_datacard_ee_systonly.log
-t2w ${era}/datacards/datacard_mumu_systonly.txt > logs/text2workspace_datacard_mumu_systonly.log
-t2w ${era}/datacards/datacard_combined_systonly.txt > logs/text2workspace_datacard_combined_systonly.log
 
 printf "\n"
 printf "\e[1m!===CALCULATING SIGNIFICANCES===!\e[0m\n"
