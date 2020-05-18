@@ -8,7 +8,7 @@ usage () {
 }
 
 t2w () {
-    text2workspace.py --poisson=2147483647 --no-optimize-pdfs "${@}"
+    text2workspace.py "${@}"
 }
 
 combine () {
