@@ -1,3 +1,7 @@
-To combine the ee and mumu datacards:
+Repo for combine scripts and datacards used by the tZq analysis
 
-python $CMSSW_BASE/src/HiggsAnalysis/CombinedLimit/scripts/combineCards.py MVA_ee=datacard-ee.txt MVA_mumu=datacard-mumu.txt > datacard.txt
+Requires combine tool and CombineHarvester
+
+Run `combine.sh` to perform fit and create plots. Run `cobmine.sh -h` for usage.
+
+Once combine has been run for 2016 and 2017 use `final.sh` to cobmine results.
